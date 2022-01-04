@@ -3,7 +3,16 @@ import shutil
 from glob import glob
 
 import cloudinary
+import cloudinary.uploader
 import requests
+
+
+cloudinary.config(
+    cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME'),
+    api_key=os.getenv('CLOUDINARY_API_KEY'),
+    api_secret=os.getenv('CLOUDINARY_API_SECRET'),
+    secure=True
+)
 
 
 def download_images(urls, uploads_dir):

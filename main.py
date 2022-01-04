@@ -1,21 +1,11 @@
-import os
 from glob import glob
 
-import cloudinary
 from flask import Flask, jsonify, request
 
 import file_utils
 from model.raid_model import MODEL_PATH, predict
 
 app = Flask(__name__)
-
-
-cloudinary.config(
-    cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME'),
-    api_key=os.getenv('CLOUDINARY_API_KEY'),
-    api_secret=os.getenv('CLOUDINARY_API_SECRET'),
-    secure=True
-)
 
 
 XRAY_UPLOADS = "xray_uploads"
