@@ -4,9 +4,8 @@ from glob import glob
 import cloudinary
 from flask import Flask, jsonify, request
 
+import utils
 from model.raid_model import MODEL_PATH, predict
-
-from .utils import delete_uploads, download_images, upload_results
 
 app = Flask(__name__)
 
@@ -30,15 +29,15 @@ def index():
     if not len(image_urls):
         return jsonify([]), 200
 
-    download_images(urls=image_urls, uploads_dir=XRAY_UPLOADS)
+    utils.download_images(urls=image_urls, uploads_dir=XRAY_UPLOADS)
 
     images = glob(f"{XRAY_UPLOADS}/*.jpg")
     defects = predict(MODEL_PATH, images)
 
-    delete_uploads(uploads_dir=XRAY_UPLOADS)
+    utils.delete_uploads(uploads_dir=XRAY_UPLOADS)
 
     # Upload to cloud and delete image locally
-    defect_uploads = upload_results(XRAY_UPLOADS_RESULTS)
+    defect_uploads = utils.upload_results(XRAY_UPLOADS_RESULTS)
 
     image_results = []
     for i in range(0, len(image_urls)):
