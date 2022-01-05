@@ -4,21 +4,29 @@ Raid ML Model for backend deployment
 
 ## Deploying to Compute Engine
 
-- Clone the repo
+- Start by running the `start.sh` script to install some dependencies and clone the repo
 
-- Install Python dependencies `apt-get install python3.8-venv python3-opencv`
+- Switch to the backend directory `cd raid_ml_model`
 
 - Create a virtual environment `python3 -m venv venv` and activate it `. venv/bin/activate`
 
-- Install all dependencies `pip install -r requirements.txt`
+- Install dependencies `pip install -r requirements.txt`
+
+- Create a `.env` file and add the required environment variables from `.env_example`
+
+  - `touch .env`
+
+  - `cp .env_example .env`
+
+  - `nano .env` to edit the values
+
+  - `source .env` to add them to the session
 
 - Download the ML model from Google Drive `gdown --id <file-id> --output best.pt`
 
-- Create a `.env` file and add all the required environment variables then source them `source .env`
-
-- Create `xray_uploads` and `xray_uploads_results` directories
-
 - Start the server `python main.py`
+
+Note: THIS MUST BE DONE IN A DIFFERENT TERMINAL SESSION WITH THE SAME SUDO USER
 
 - A dummy request
 
