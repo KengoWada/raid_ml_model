@@ -31,6 +31,5 @@ Note: THIS MUST BE DONE IN A DIFFERENT TERMINAL SESSION WITH THE SAME SUDO USER
 - A dummy request
 
 ```bash
-curl -X POST http://localhost:5000/ -H 'Content-Type: application/json' -d '{"images": ["https://radiologykey.com/wp-content/uploa
-ds/2019/03/f003-016-9781455774838.jpg"]}
+curl -X POST http://localhost:5000/ -H 'Content-Type: application/json' -d '{"images": ["https://radiologykey.com/wp-content/uploads/2019/03/f003-016-9781455774838.jpg"]}
 ```
